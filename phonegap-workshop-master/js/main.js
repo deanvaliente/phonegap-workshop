@@ -1,5 +1,16 @@
 var app = {
 
+    renderHomeView : function (){
+        var html = 
+                    "<div class='header'><h1>Home</h1></div>" + 
+                    "<div class='search-view'>" + 
+                    "<input class='search-key' type="text"/>" + 
+                    "<ul class='employee-list'></ul>" + 
+                    "</div>";
+        $('body').html(html);
+        $('.search-key').on('keyup', $.proxy(this.findByName, this));
+    },
+
     showAlert: function (message, title) {
         if (navigator.notification) {
             navigator.notification.alert(message, null, title, 'OK');
@@ -23,10 +34,14 @@ var app = {
 
     initialize: function() {
         var self = this;
+<<<<<<< HEAD
         this.store = new MemoryStore(function() {
             self.showAlert('Store Initialized', 'Info');
+=======
+        this.store = new MemoryStore(function(){
+            self.renderHomeView();
+>>>>>>> 0d79bdcbc62c362ae062e631450fd736ba7c2aeb
         });
-        $('.search-key').on('keyup', $.proxy(this.findByName, this));
     }
 
 };
